@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Prathmesh Hemlal Shimpi</title>
+  <meta name="description" content="A clean, modern portfolio template (HTML/CSS/JS)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa6b2;
+      --accent: #7c5cff;
+      --glass: rgba(255, 255, 255, 0.04);
+      --glass-2: rgba(255, 255, 255, 0.02);
+      --text: #e6eef8;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, #071021 0%, #081426 50%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.45;
+      padding: 32px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto
+    }
+
+    /* header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #3bd3ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #021;
+      box-shadow: 0 6px 18px rgba(124, 92, 255, 0.18)
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      align-items: center
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 600
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: var(--glass)
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .btn {
+      background: linear-gradient(90deg, var(--accent), #4bd0ff);
+      padding: 8px 14px;
+      border-radius: 10px;
+      color: #021;
+      font-weight: 700;
+      border: none;
+      cursor: pointer
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer
+    }
+
+    /* hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 28px
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), transparent);
+      padding: 28px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 24px rgba(2, 6, 23, 0.6);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--glass-2)
+    }
+
+    .intro h1 {
+      margin: 0;
+      font-size: 38px;
+      letter-spacing: -0.02em
+    }
+
+    .intro p {
+      color: var(--muted);
+      margin-top: 10px
+    }
+
+    .cta-row {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .socials a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--glass)
+    }
+
+    /* profile card */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #2b2e4a, #4a3d8f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 8px 30px rgba(7, 8, 20, 0.6)
+    }
+
+    .meta {
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    /* sections */
+    section {
+      margin-bottom: 22px
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .project-card {
+      padding: 16px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      border: 1px solid var(--glass);
+      transition: transform .25s ease, box-shadow .25s ease
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.6)
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 18px
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px
+    }
+
+    .tag {
+      padding: 6px 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    /* skills */
+    .skill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--glass);
+      margin-bottom: 8px
+    }
+
+    .progress {
+      height: 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      overflow: hidden
+    }
+
+    .progress>span {
+      display: block;
+      height: 100%;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--accent), #3bd3ff)
+    }
+
+    /* contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: transparent;
+      color: var(--text)
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 20px 0
+    }
+
+    /* responsive */
+    @media (max-width:980px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .container {
+        padding: 0 18px
+      }
+    }
+
+    @media (max-width:640px) {
+      .grid-3 {
+        grid-template-columns: 1fr
+      }
+
+      nav {
+        display: none
+      }
+
+      header {
+        gap: 8px
+      }
+
+      body {
+        padding: 18px
+      }
+    }
+
+    /* reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="">PS</div>
+        <div>
+          <div style="font-weight:800">Prathmesh Hemlal Shimpi</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Data Analyst | SQL Developer| PowerBi Developer
+          </div>
+        </div>
+      </div>
+
+      <nav aria-label="Main Navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn" id="downloadResume">Resume</button>
+        <button class="btn-ghost" id="themeToggle">Toggle Light</button>
+      </div>
+    </header>
+
+    <main>
+
+
+      <section class="hero">
+        <div class="card intro reveal">
+          <h1>Hi, I am <span
+              style="background:linear-gradient(90deg,var(--accent),#4bd0ff);-webkit-background-clip:text;background-clip:text;color:transparent;">Prathmesh</span>
+          </h1>
+          <p>Analytical and detail-oriented Data Analyst skilled in transforming raw data into actionable insights. I
+            specialize in writing optimized SQL queries, designing interactive Power BI dashboards, and identifying
+            trends that drive data-backed decisions. Passionate about leveraging data visualization and analysis to
+            solve real-world business problems and support strategic growth.</p>
+          <div class="cta-row">
+            <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire
+              me</button>
+            <button class="btn-ghost"
+              onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">See my work</button>
+          </div>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/prathmesh-shimpi-583922247/">LinkedIn</a>
+            <a href="https://github.com/Pratham269">GitHub</a>
+            <a href="https://leetcode.com/u/Pratham_269/">Leetcode</a>
+          </div>
+        </div>
+
+        <aside class="card profile reveal">
+          <div class="avatar">
+            <img src="Photo.png" style="width:100%; height:100%; border-radius:22px; object-fit:cover;">
+          </div>
+          <div style="font-weight:800">Prathmesh</div>
+          <div class="meta">Pune, India • Open to work</div>
+          <div style="margin-top:12px;font-size:14px;color:var(--muted)">I turn raw data into insights, build
+            dashboards, optimize SQL workflows with clarity and impact.</div>
+        </aside>
+      </section>
+
+      <section id="about" class="card reveal">
+        <h2>About me</h2>
+        <p style="color:var(--muted);margin-top:8px">I am a detail-oriented Data Analyst skilled in SQL and Power BI,
+          turning raw data into actionable insights. I build interactive dashboards, optimize queries, and help
+          organizations make data-driven decisions. Passionate about analyzing trends, solving problems, and creating
+          meaningful impact through data.</p>
+        <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+
+        </div>
+      </section>
+
+      <section id="experience" class="card reveal">
+        <h2>Experience</h2>
+        <div style="margin-top:12px">
+          <div style="margin-bottom:12px">
+            <strong>RPA Developer - AutomationEdge Pvt. Ltd - July 2025 to Present </strong> <br>
+            <span style="color:var(--muted);font-size:14px">Worked as a Robotic Process Automation (RPA) developer,
+              designing and implementing automation workflows to optimize business processes. Gained hands-on experience
+              in process mapping, bot development, testing, and deployment. Contributed to improving operational
+              efficiency by automating repetitive tasks, handling exceptions, and integrating systems. Developed strong
+              problem-solving and analytical skills while collaborating with cross-functional teams to deliver scalable
+              automation solutions.</span>
+          </div>
+          <div>
+            <strong>Data Analyst - PHN Technology Pvt. Ltd - April 2023 to June 2023</strong><br>
+            <span style="color:var(--muted);font-size:14px">Worked in the Data Science team, gaining hands-on experience
+              in analyzing datasets, cleaning and transforming data, and generating actionable insights. Utilized Python
+              libraries such as Pandas, NumPy, Matplotlib, and Seaborn for data manipulation, analysis, and
+              visualization. Built reports and dashboards to support data-driven decision-making, while developing
+              strong analytical and problem-solving skills through real-world datasets and collaborative
+              projects.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 style="margin-bottom:14px">Selected projects</h2>
+        <div class="grid-3">
+
+          <article class="project-card reveal">
+            <h3>
+              <a href="https://yourprojectlink.com" target="_blank" style="text-decoration:none; color:inherit;">Travel
+                Request Bot</a>
+            </h3>
+            <p class="muted">
+              An email-processing bot that extracts travel tokens, validates manager assignment and sends approval
+              emails. Built with AutomationEdge Process Studio.
+            </p>
+            <div class="tags">
+              <span class="tag">RPA</span>
+              <span class="tag">Automation</span>
+              <span class="tag">AI</span>
+              <span class="tag"></span>
+            </div>
+          </article>
+
+
+          <article class="project-card reveal">
+            <h3>Desktop AI Assistant</h3>
+            <p class="muted">Voice controlled home automation (Arduino + Python). Implemented using PyFirmata to control
+              relays and services.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">IoT</span><span
+                class="tag">Embedded</span></div>
+          </article>
+
+          <article class="project-card reveal">
+            <h3>Portfolio Website</h3>
+            <p class="muted">This template — lightweight, responsive portfolio with nice micro-interactions and
+              accessibility basics.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="card reveal">
+        <h2>Skills & Tools</h2>
+        <div style="margin-top:12px">
+          <div class="skill">
+            <div>Python</div>
+            <div style="width:35%" class="progress"><span style="width:90%"></span></div>
+          </div>
+          <div class="skill">
+            <div>Excel</div>
+            <div style="width:35%" class="progress"><span style="width:90%"></span></div>
+          </div>
+          <div class="skill">
+            <div>SQL</div>
+            <div style="width:35%" class="progress"><span style="width:90%"></span></div>
+          </div>
+          <div class="skill">
+            <div>PowerBi</div>
+            <div style="width:35%" class="progress"><span style="width:80%"></span></div>
+          </div>
+          <div class="skill">
+            <div>Java</div>
+            <div style="width:35%" class="progress"><span style="width:75%"></span></div>
+          </div>
+          <div class="skill">
+            <div>Data Analysis</div>
+            <div style="width:35%" class="progress"><span style="width:85%"></span></div>
+          </div>
+          <div class="skill">
+            <div>Data Science</div>
+            <div style="width:35%" class="progress"><span style="width:75%"></span></div>
+          </div>
+          <div class="skill">
+            <div>Machine Learning</div>
+            <div style="width:35%" class="progress"><span style="width:55%"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="card reveal">
+        <h2>Education</h2>
+        <div style="margin-top:12px">
+          <div style="margin-bottom:12px">
+            <strong>Bachelor's in Electronics and Telecommunication</strong> — Modern Education Society's Wadia College
+            of Engineering, Pune<br>
+            <span style="color:var(--muted);font-size:14px">2021 - 2025</span>
+          </div>
+          <div>
+            <strong>Diploma in Electronics and Telecommunication</strong> — Government Polytechnic, Pune<br>
+            <span style="color:var(--muted);font-size:14px">2018 - 2021</span>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="contact" class="card reveal">
+        <h2>Contact</h2>
+        <p style="color:var(--muted);margin-top:6px">Want to collaborate or just say hi? Send a message.</p>
+        <div style="margin-top:12px" class="contact-grid">
+          <div>
+            <input class="input" id="name" placeholder="Your name" />
+            <input class="input" id="email" placeholder="Your email" style="margin-top:8px" />
+            <input class="input" id="subject" placeholder="Subject" style="margin-top:8px" />
+          </div>
+          <div>
+            <textarea id="message" placeholder="Message"></textarea>
+            <div style="margin-top:8px;display:flex;justify-content:flex-end">
+              <button class="btn" id="send">Send</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Prathmesh — Built with ❤️</div>
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "DhA58oPzdVOy1Dfkd", // your EmailJS public key
+      });
+    })();
+  </script>
+
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // simple reveal on scroll
+    const revealEl = [...document.querySelectorAll('.reveal')];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); })
+    }, { threshold: 0.12 });
+    revealEl.forEach(el => io.observe(el));
+
+    // theme toggle (light / dark)
+    const themeBtn = document.getElementById('themeToggle');
+    let light = false;
+    themeBtn.addEventListener('click', () => {
+      light = !light;
+      if (light) {
+        document.documentElement.style.setProperty('--bg', '#f6f7fb');
+        document.documentElement.style.setProperty('--card', '#ffffff');
+        document.documentElement.style.setProperty('--text', '#071021');
+        document.documentElement.style.setProperty('--muted', '#526074');
+        document.documentElement.style.setProperty('--glass', 'rgba(2,6,23,0.03)');
+        themeBtn.textContent = 'Toggle Dark';
+        document.body.style.background = 'linear-gradient(180deg,#f8fafc,#eef2ff)';
+      } else {
+        document.documentElement.style.setProperty('--bg', '#0f1724');
+        document.documentElement.style.setProperty('--card', '#0b1220');
+        document.documentElement.style.setProperty('--text', '#e6eef8');
+        document.documentElement.style.setProperty('--muted', '#9aa6b2');
+        document.documentElement.style.setProperty('--glass', 'rgba(255,255,255,0.04)');
+        themeBtn.textContent = 'Toggle Light';
+        document.body.style.background = 'linear-gradient(180deg,#071021 0%, #081426 50%)';
+      }
+    });
+
+    // resume button quick demo (download placeholder)
+    document.getElementById('downloadResume').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = 'Resume.pdf'; // your resume file here
+      link.download = 'Prathmesh_Shimpi_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      alert("Thankyou for downloading my resume");
+    });
+
+    document.getElementById('send').addEventListener('click', () => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill name, email, and message.');
+        return;
+      }
+
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message
+      };
+
+      emailjs.send('service_fqsa8gm', 'template_6xj98qc', templateParams)
+        .then(() => {
+          alert('Thanks ' + name + '! Message sent successfully.');
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('subject').value = '';
+          document.getElementById('message').value = '';
+        }, (err) => {
+          alert('Oops! Something went wrong: ' + JSON.stringify(err));
+        });
+    });
+
+
+    // smooth internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const el = document.querySelector(a.getAttribute('href'));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
